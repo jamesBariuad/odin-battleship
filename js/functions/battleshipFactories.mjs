@@ -1,7 +1,4 @@
-import {
-  createBoardUI,
-  
-} from "./battleshipUserInterface.mjs";
+import { createBoardUI, updateCellColor } from "./battleshipUserInterface.mjs";
 
 const createShip = (length) => {
   const stats = {
@@ -90,7 +87,7 @@ const createGameBoard = () => {
     if (hitCoordinates.length == 15) {
       return true;
     }
-    return;
+    return false;
   };
 
   return {
@@ -108,70 +105,34 @@ const createPlayer = (name) => {
     return boardToAttack.receiveAttack(xCoordinate, yCoordinate, enemyShips);
   };
 
-  const computerAttack = (boardToAttack, enemyShips) => {
+  const generateRandomMove = (boardToAttack) => {
     let x, y, isCoordinateInMissed, isCoordinateInHit;
-    const generateRandomMove = () => {
-      do {
-        x = Math.floor(Math.random() * 10);
-        y = Math.floor(Math.random() * 10);
+    do {
+      x = Math.floor(Math.random() * 10);
+      y = Math.floor(Math.random() * 10);
 
-        isCoordinateInMissed = boardToAttack.hitCoordinates.some(
-          (coordinate) => coordinate[0] === x && coordinate[1] === y
-        );
-        isCoordinateInHit = boardToAttack.missedCoordinates.some(
-          (coordinate) => coordinate[0] === x && coordinate[1] === y
-        );
-      } while (isCoordinateInMissed || isCoordinateInHit);
-
-      return [x, y];
-    };
-
-    const coordinatesToAttack = generateRandomMove();
-    return attack(
-      boardToAttack,
-      coordinatesToAttack[0],
-      coordinatesToAttack[1],
-      enemyShips
-    );
+      isCoordinateInMissed = boardToAttack.hitCoordinates.some(
+        (coordinate) => coordinate[0] === x && coordinate[1] === y
+      );
+      isCoordinateInHit = boardToAttack.missedCoordinates.some(
+        (coordinate) => coordinate[0] === x && coordinate[1] === y
+      );
+    } while (isCoordinateInMissed || isCoordinateInHit);
+    return [x, y];
   };
 
-  return { name, attack, computerAttack };
+  // const computerAttack = (boardToAttack, enemyShips) => {
+
+  //   return attack(
+  //     boardToAttack,
+  //     coordinatesToAttack[0],
+  //     coordinatesToAttack[1],
+  //     enemyShips
+  //   );
+  // };
+
+  return { name, attack, generateRandomMove };
 };
 
-const gameFlow = () => {
-  const playerBoardUI = document.querySelector("#player-board");
-  const enemyBoardUI = document.querySelector("#enemy-board");
-  const player = createPlayer("player");
-  const enemy = createPlayer("enemy");
-  const playerShips = createShips();
-  const enemyShips = createShips();
-  const playerBoard = createGameBoard();
-  const enemyBoard = createGameBoard();
-
-  playerBoard.placeShips(0, 0, playerShips.battleship, "vertical");
-  playerBoard.placeShips(1, 0, playerShips.carrier, "vertical");
-  playerBoard.placeShips(2, 0, playerShips.destroyer, "vertical");
-  playerBoard.placeShips(3, 0, playerShips.patrolBoat, "vertical");
-  playerBoard.placeShips(4, 0, playerShips.submarine, "vertical");
-
-  enemyBoard.placeShips(0, 0, enemyShips.battleship, "horizontal");
-  enemyBoard.placeShips(0, 1, enemyShips.carrier, "horizontal");
-  enemyBoard.placeShips(0, 2, enemyShips.destroyer, "horizontal");
-  enemyBoard.placeShips(0, 3, enemyShips.patrolBoat, "horizontal");
-  enemyBoard.placeShips(0, 4, enemyShips.submarine, "horizontal");
-
-  createBoardUI("player", playerBoard, playerShips, playerBoardUI);
-  createBoardUI("enemy", enemyBoard, enemyShips, enemyBoardUI);
-
-  // let playerToAttack = 'Player'
-  // const takeTurns = () => {
-  //   ///first turn player
-  //   player.attack(enemyBoard,x,y,enemyShips) =='Hit!'
-
-  //   //alternate between player and computer
-  //   //repeat until all ships are sunk
-  // }
-};
-gameFlow();
 
 export { createShips, createGameBoard, createPlayer };

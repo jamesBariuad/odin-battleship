@@ -1,28 +1,49 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    min-width: 100vw;
-    min-height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-#player-board, #enemy-board{
-    display: flex;
-    flex-wrap: wrap;
-    height: 500px;
-    width: 500px;
-    background-color: gray;
+#player-board,
+#enemy-board {
+  display: flex;
+  flex-wrap: wrap;
+  height: 500px;
+  width: 500px;
+  background-color: gray;
 }
 
-#player-board div, #enemy-board div{
-    background-color: gray;
-    outline: 2px solid black;
+#player-board div,
+#enemy-board div {
+  background-color: darkcyan;
+  outline: 2px solid black;
 }
 
+.boards {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#enemy-board div.miss,  #player-board div.miss  {
+  background-color: whitesmoke;
+}
+
+#enemy-board div.hit, #player-board div.hit {
+  background-color: darkred;
+}
+
+.unclickable {
+  pointer-events: none;
+}

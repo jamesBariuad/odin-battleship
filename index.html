@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BattleShip</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div id="player-board"></div>
-    <div id="enemy-board"></div>
-    <script type="module" src="./js/functions/battleship.mjs"></script>
-</body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="turn-text"></div>
+    <div class="boards">
+      <div id="player-board"></div>
+      <div id="enemy-board"></div>
+    </div>
+    <script type="module" src="./js/functions/game.mjs"></script>
+  </body>
 </html>
