@@ -15,7 +15,7 @@ body {
 }
 
 #player-board,
-#enemy-board {
+#enemy-board, #place-ships {
   display: flex;
   flex-wrap: wrap;
   height: 500px;
@@ -47,3 +47,92 @@ body {
 .unclickable {
   pointer-events: none;
 }
+
+.overlay{
+  display: block; /* Initially hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  z-index: 1;
+  text-align: center;
+}
+
+.overlay-content{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px ;
+  justify-content: center;
+}
+
+#instructions{
+  background-color: white;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 2px;
+}
+
+#ships-container{
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 500px;
+}
+
+#place-ships .cell {
+  background-color: darkcyan;
+  outline: 2px solid black;
+}
+
+#patrol-boat{
+  background-color: red;
+  width: 50px;
+  height: 50px;
+  /* outline: 2px solid black; */
+}
+
+#submarine{
+  position: relative;
+  background-color: red;
+  width: 100px;
+  height: 50px;
+  /* z-index: 2;
+  outline: 2px solid black; */
+}
+
+#destroyer{
+  position: relative;
+  background-color: red;
+  width: 150px;
+  height: 50px;
+  /* z-index: 2;
+  outline: 2px solid black; */
+
+}
+
+#battleship{
+  position: relative;
+  background-color: red;
+  width: 200px;
+  height: 50px;
+  /* z-index: 2;
+  outline: 2px solid black; */
+
+}
+
+#carrier{
+  position: relative;
+  background-color: red;
+  width: 250px;
+  height: 50px;
+  /* z-index: 2;
+  outline: 2px solid black; */
+}
+
+

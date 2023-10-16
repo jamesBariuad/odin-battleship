@@ -4,6 +4,7 @@ import {
   createGameBoard,
   createPlayer,
 } from "./battleshipFactories.mjs";
+import { createBoardToPlaceShipsUI } from "./placeShips.mjs";
 
 const initializeGame = () => {
   const playerBoardUI = document.querySelector("#player-board");
@@ -19,11 +20,12 @@ const initializeGame = () => {
   const enemyBoard = createGameBoard();
 
   // Place player's ships
-  playerBoard.placeShips(0, 0, playerShips.battleship, "vertical");
-  playerBoard.placeShips(1, 0, playerShips.carrier, "vertical");
-  playerBoard.placeShips(2, 0, playerShips.destroyer, "vertical");
-  playerBoard.placeShips(3, 0, playerShips.patrolBoat, "vertical");
-  playerBoard.placeShips(4, 0, playerShips.submarine, "vertical");
+  // playerBoard.placeShips(0, 0, playerShips.battleship, "vertical");
+  // playerBoard.placeShips(1, 0, playerShips.carrier, "vertical");
+  // playerBoard.placeShips(2, 0, playerShips.destroyer, "vertical");
+  // playerBoard.placeShips(3, 0, playerShips.patrolBoat, "vertical");
+  // playerBoard.placeShips(4, 0, playerShips.submarine, "vertical");
+
 
   // Place enemy's ships
   enemyBoard.placeShips(0, 0, enemyShips.battleship, "horizontal");
@@ -120,4 +122,13 @@ const gameLoop = () => {
   playerAttack(gameData);
 };
 
-gameLoop();
+// const placePlayerShips = (playerBoard, playerBoardUI, playerShips) =>{
+//   console.table(playerBoard, playerShips) 
+//   console.log(playerShips.battleship)
+// }
+
+createBoardToPlaceShipsUI()
+
+
+
+// gameLoop();

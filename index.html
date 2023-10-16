@@ -12,6 +12,19 @@
       <div id="player-board"></div>
       <div id="enemy-board"></div>
     </div>
+    <div class="overlay">
+      <div class="overlay-content">
+        <div id="instructions">Place your ships</div>
+        <div id="place-ships"></div>
+        <div id="ships-container">
+          <div id="patrol-boat" draggable="true" data-length="1"></div>
+          <div id="submarine" draggable="true" data-length="2"></div>
+          <div id="destroyer" draggable="true" data-length="3"></div>
+          <div id="battleship" draggable="true" data-length="4"></div>
+          <div id="carrier" draggable="true" data-length="5"></div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="./js/functions/game.mjs"></script>
   </body>
 </html>
