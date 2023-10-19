@@ -15,7 +15,8 @@ body {
 }
 
 #player-board,
-#enemy-board, #place-ships {
+#enemy-board,
+#place-ships {
   display: flex;
   flex-wrap: wrap;
   height: 500px;
@@ -36,11 +37,13 @@ body {
   flex-wrap: wrap;
 }
 
-#enemy-board div.miss,  #player-board div.miss  {
+#enemy-board div.miss,
+#player-board div.miss {
   background-color: whitesmoke;
 }
 
-#enemy-board div.hit, #player-board div.hit {
+#enemy-board div.hit,
+#player-board div.hit {
   background-color: darkred;
 }
 
@@ -48,7 +51,7 @@ body {
   pointer-events: none;
 }
 
-.overlay{
+.overlay {
   display: block; /* Initially hidden */
   position: fixed;
   top: 0;
@@ -60,24 +63,24 @@ body {
   text-align: center;
 }
 
-.overlay-content{
+.overlay-content {
   display: flex;
   height: 100%;
   width: 100%;
   flex-direction: column;
   align-items: center;
-  gap: 30px ;
+  gap: 30px;
   justify-content: center;
 }
 
-#instructions{
+#instructions {
   background-color: white;
   width: fit-content;
   padding: 10px;
   border-radius: 2px;
 }
 
-#ships-container{
+#ships-container {
   display: flex;
   gap: 10px;
   justify-content: space-between;
@@ -90,49 +93,82 @@ body {
   outline: 2px solid black;
 }
 
-#patrol-boat{
+#patrol-boat {
   background-color: red;
   width: 50px;
   height: 50px;
-  /* outline: 2px solid black; */
 }
 
-#submarine{
+#submarine {
   position: relative;
   background-color: red;
   width: 100px;
   height: 50px;
-  /* z-index: 2;
-  outline: 2px solid black; */
 }
 
-#destroyer{
+#destroyer {
   position: relative;
   background-color: red;
   width: 150px;
   height: 50px;
-  /* z-index: 2;
-  outline: 2px solid black; */
-
 }
 
-#battleship{
+#battleship {
   position: relative;
   background-color: red;
   width: 200px;
   height: 50px;
-  /* z-index: 2;
-  outline: 2px solid black; */
-
 }
 
-#carrier{
+#carrier {
   position: relative;
   background-color: red;
   width: 250px;
   height: 50px;
-  /* z-index: 2;
-  outline: 2px solid black; */
+}
+
+#patrol-boat.vertical {
+  background-color: red;
+  height: 50px;
+  width: 50px;
+}
+
+#submarine.vertical {
+  position: relative;
+  background-color: red;
+  height: 100px;
+  width: 50px;
+}
+
+#destroyer.vertical {
+  position: relative;
+  background-color: red;
+  height: 150px;
+  width: 50px;
+}
+
+#destroyer.vertical {
+  position: relative;
+  background-color: red;
+  height: 150px;
+  width: 50px;
+}
+
+#battleship.vertical {
+  position: relative;
+  background-color: red;
+  width: 50px;
+  height: 200px;
+}
+
+#carrier.vertical {
+  position: relative;
+  background-color: red;
+  height: 250px;
+  width : 50px;
 }
 
 
+.hidden{
+  display: none;
+}

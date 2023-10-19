@@ -4,7 +4,64 @@ import {
   createGameBoard,
   createPlayer,
 } from "./battleshipFactories.mjs";
-import { createBoardToPlaceShipsUI } from "./placeShips.mjs";
+import {
+  createBoardToPlaceShipsUI,
+  getOccupiedCoordinates,
+} from "./placeShips.mjs";
+
+const placePlayerShips = (playerBoard, playerShips) => {
+  const occupiedCoordinates = getOccupiedCoordinates();
+
+  //process occupied coordinates for ease of use
+  for (const key in occupiedCoordinates) {
+    let shipName = occupiedCoordinates[key];
+    const xCoordinate = +occupiedCoordinates[key][0][0];
+    const yCoordinate = +occupiedCoordinates[key][0][1];
+    const isVertical = shipName[shipName.length - 1];
+    let orientation = "vertical";
+    if (!isVertical) {
+      orientation = "horizontal";
+    }
+    if (key == "patrol-boat") {
+      occupiedCoordinates["patrolBoat"] = occupiedCoordinates["patrol-boat"];
+      occupiedCoordinates["patrolBoat"] = {
+        x: xCoordinate,
+        y: yCoordinate,
+        orientation: orientation,
+      };
+      delete occupiedCoordinates["patrol-boat"];
+    }
+    const shipDetails = {
+      x: xCoordinate,
+      y: yCoordinate,
+      orientation: orientation,
+    };
+    occupiedCoordinates[key] = shipDetails;
+  }
+  delete occupiedCoordinates["patrol-boat"];
+  // Place player's ships
+  // playerBoard.placeShips(0, 0, playerShips.battleship, "vertical");
+  // playerBoard.placeShips(1, 0, playerShips.carrier, "vertical");
+  // playerBoard.placeShips(2, 0, playerShips.destroyer, "vertical");
+  // playerBoard.placeShips(3, 0, playerShips.patrolBoat, "vertical");
+  // playerBoard.placeShips(4, 0, playerShips.submarine, "vertical");
+
+  for (const key in occupiedCoordinates) {
+    // console.log(occupiedCoordinates[key])
+    const currentShip = [key];
+
+
+    playerBoard.placeShips(
+      occupiedCoordinates[key].x,
+      occupiedCoordinates[key].y,
+      playerShips[currentShip],
+      occupiedCoordinates[key].orientation
+    );
+  }
+  // }
+  // playerBoard.placeShips()
+  // return playerBoard
+};
 
 const initializeGame = () => {
   const playerBoardUI = document.querySelector("#player-board");
@@ -25,7 +82,7 @@ const initializeGame = () => {
   // playerBoard.placeShips(2, 0, playerShips.destroyer, "vertical");
   // playerBoard.placeShips(3, 0, playerShips.patrolBoat, "vertical");
   // playerBoard.placeShips(4, 0, playerShips.submarine, "vertical");
-
+  placePlayerShips(playerBoard, playerShips);
 
   // Place enemy's ships
   enemyBoard.placeShips(0, 0, enemyShips.battleship, "horizontal");
@@ -37,7 +94,7 @@ const initializeGame = () => {
   // Create game boards UI
   createBoardUI("player", playerBoard, playerShips, playerBoardUI);
   createBoardUI("enemy", enemyBoard, enemyShips, enemyBoardUI);
-
+  initializeGame;
   return {
     playerBoardUI,
     enemyBoardUI,
@@ -116,19 +173,24 @@ const gameOver = (playerBoard, enemyBoard) => {
   );
 };
 
-const gameLoop = () => {
+const startGame = () => {
   const gameData = initializeGame();
 
-  playerAttack(gameData);
+  const overlay = document.querySelector(".overlay");
+  overlay.classList.add("hidden");
+  playerAttack(gameData)
 };
 
-// const placePlayerShips = (playerBoard, playerBoardUI, playerShips) =>{
-//   console.table(playerBoard, playerShips) 
-//   console.log(playerShips.battleship)
-// }
+const showStartGameButton = () => {
+  const startButton = document.querySelector("#start-button");
+  startButton.addEventListener("click", () => startGame());
+  startButton.classList.remove("hidden");
+};
 
-createBoardToPlaceShipsUI()
+const gameLoop = () => {
+  createBoardToPlaceShipsUI();
+};
 
+gameLoop();
 
-
-// gameLoop();
+export { showStartGameButton };

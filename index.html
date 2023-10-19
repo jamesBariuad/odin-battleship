@@ -15,14 +15,16 @@
     <div class="overlay">
       <div class="overlay-content">
         <div id="instructions">Place your ships</div>
+        <button id="rotate">Rotate</button>
         <div id="place-ships"></div>
-        <div id="ships-container">
+        <div id="ships-container" >
           <div id="patrol-boat" draggable="true" data-length="1"></div>
           <div id="submarine" draggable="true" data-length="2"></div>
           <div id="destroyer" draggable="true" data-length="3"></div>
           <div id="battleship" draggable="true" data-length="4"></div>
           <div id="carrier" draggable="true" data-length="5"></div>
         </div>
+        <button id="start-button" class="hidden">Start Game</button>
       </div>
     </div>
     <script type="module" src="./js/functions/game.mjs"></script>
