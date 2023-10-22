@@ -15,6 +15,7 @@ const placePlayerShips = (playerBoard, playerShips) => {
   //process occupied coordinates for ease of use
   for (const key in occupiedCoordinates) {
     let shipName = occupiedCoordinates[key];
+    console.log(occupiedCoordinates)
     const xCoordinate = +occupiedCoordinates[key][0][0];
     const yCoordinate = +occupiedCoordinates[key][0][1];
     const isVertical = shipName[shipName.length - 1];
@@ -141,7 +142,7 @@ const playerAttack = (gameData) => {
     }
     setTimeout(() => {
       enemyAttack(gameData);
-    }, 400);
+    }, 400);  
     waitForEnemyTurnToEnd();
   };
 

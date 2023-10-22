@@ -18,7 +18,7 @@ const createBoardUI = (boardType, board, ships, boardUI) => {
     for (let x = 0; x < 10; x++) {
       const cell = createGameCell(x, y);
 
-      if (containsCoordinates(board.shipCoordinates, [x, y])) {
+      if (containsCoordinates(board.shipCoordinates, [x, y]) && boardType=='player') {
         cell.style.backgroundColor = "red";
       }
 

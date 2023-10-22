@@ -7,17 +7,25 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="turn-text"></div>
-    <div class="boards">
-      <div id="player-board"></div>
-      <div id="enemy-board"></div>
+    <div class="game">
+      <div class="turn-text">Player Turn</div>
+      <div class="boards">
+        <div>
+          <div>Player Board</div>
+          <div id="player-board"></div>
+        </div>
+        <div>
+          <div>Enemy Board</div>
+          <div id="enemy-board"></div>
+        </div>
+      </div>
     </div>
     <div class="overlay">
       <div class="overlay-content">
         <div id="instructions">Place your ships</div>
         <button id="rotate">Rotate</button>
         <div id="place-ships"></div>
-        <div id="ships-container" >
+        <div id="ships-container">
           <div id="patrol-boat" draggable="true" data-length="1"></div>
           <div id="submarine" draggable="true" data-length="2"></div>
           <div id="destroyer" draggable="true" data-length="3"></div>
